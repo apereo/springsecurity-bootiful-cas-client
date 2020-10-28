@@ -1,8 +1,8 @@
 cas:
   #Required properties
-  server-url-prefix: https://dk.example.org:8143/cas
-  server-login-url: https://dk.example.org:8143/cas/login
-  client-host-url: https://dk.example.org:8443
+  server-url-prefix: https://casserver.herokuapp.com/cas
+  server-login-url: https://casserver.herokuapp.com/cas/login
+  client-host-url: https://localhost:8443
 
   #Optional properties
   authentication-url-patterns: [/protected, /protected2]
@@ -14,14 +14,14 @@ cas:
   #validation-type: SAML
 
   #gateway: true
-  use-session: false
+  use-session: true
   #redirect-after-validation: false
-  #allowed-proxy-chains: ['https://dk.example.org:8443/proxy1', 'https://dk.example.org:8443/proxy2']
-  #proxy-callback-url: https://dk.example.org:8443/proxy-callback
+  #allowed-proxy-chains: ['https://localhost:8443/proxy1', 'https://localhost:8443/proxy2']
+  #proxy-callback-url: https://localhost:8443/proxy-callback
   #proxy-receptor-url: /proxy-callback
   #accept-any-proxy: true
 
-casLogoutUrl: https://dk.example.org:8143/cas/logout?service=https://dk.example.org:8443
+casLogoutUrl: https://casserver.herokuapp.com/cas/logout?service=https://localhost:8443
 
 spring:
   thymeleaf:
@@ -37,7 +37,7 @@ server:
     tracking-modes: COOKIE
   ssl:
     enabled: true
-    key-store: /Users/dima767/.keystore
+    key-store: /etc/cas/thekeystore
     key-store-password: changeit
   #For 'renew' param, latest Java CAS client requires that it is set as the Servlet 'context-param'. This is how to easily set it in Spring Boot
   #context-parameters.renew: true

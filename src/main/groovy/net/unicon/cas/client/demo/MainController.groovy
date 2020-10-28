@@ -1,8 +1,9 @@
 package net.unicon.cas.client.demo
 
-import net.unicon.cas.client.configuration.CasClientConfigurerAdapter
-import net.unicon.cas.client.configuration.EnableCasClient
+
 import org.jasig.cas.client.authentication.AttributePrincipal
+import org.jasig.cas.client.boot.configuration.CasClientConfigurer
+import org.jasig.cas.client.boot.configuration.EnableCasClient
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.stereotype.Controller
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse
 
 @Controller
 @EnableCasClient
-class MainController extends CasClientConfigurerAdapter {
+class MainController implements CasClientConfigurer {
 
     @Value('${casLogoutUrl}')
     private String casLogoutUrl;
